@@ -11,6 +11,7 @@ class App extends Component {
   state ={
      tarefas:[]
   }
+ 
   componentDidMount(){
     fetch("/api/tarefas.json")
       .then(response=>response.json())
@@ -21,16 +22,30 @@ class App extends Component {
       .finally(function(){
         console.log("Sempre retorna")
       })
-  }
+    }
   handleRemoverLinha = (id) => {
     const livros = this.state.tarefas.filter((l)=> l.id !==id)
-    this.setState({livros})
+    this.setState ({ tarefas: livros})
     console.log({livros})
-  }
+
+    }
+    handleOrdenarTitulo =(titulo) =>{
+      const livros = this.state.tarefas.sort((a,b) =>
+        a.titulo<b.titulo ? -1:0
+      )
+      this.setState({livros})
+    }
+    handleOrdenarAutor =(autor) =>{
+      const livros = this.state.tarefas.sort((a,b) =>
+        a.autor<b.autor ? -1:0
+      )
+      this.setState({livros})
+    }
+ 
   render(){
    return (
       <table className="tabela">
-     <Head/>
+     <Head  ordenarTitulo= {this.handleOrdenarTitulo} ordenarAutor ={this.handleOrdenarAutor}/>
      <Body tarefas={this.state.tarefas} removerLinha={this.handleRemoverLinha}/>
      <Foot qdeTarefas ={this.state.tarefas.length}/>
     </table>

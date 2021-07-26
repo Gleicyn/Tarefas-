@@ -23,8 +23,7 @@ thead > tr:last-child {
     text-align: center;
     background: #9C9C9C;
   }
-  .remover {
-    display: inline-block;
+  .remover, .filtro {
     font-weight: 400;
     color: #212529;
     text-align: center;
@@ -39,8 +38,15 @@ thead > tr:last-child {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  .remover:hover {
+  .remover:hover, .filtro:hover {
     color: #fff;
     background-color: black;
     border: 1px solid transparent;
+  }
+  .filtros{
+      display:flex;
+      height: 40px;
+      margin-left: 30px;
+      justify-content: center;
+    
   }
